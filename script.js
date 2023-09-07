@@ -1,33 +1,47 @@
-let playerScore = 0
-let computerScore = 0
-let roundWinner = ''
+
+function game() {
+    playRound();
+}
+
+function playRound() {
+    const playerSelection = playerChoice();
+    const computerSelection = getComputerChoice();
+    //  if (playerSelection.toLowerCase() === computerSelection) {
+    //     return "Tie";
+    //  } if  (
+    //     (playerSelection.toLowerCase() === 'ROCK' && computerSelection === 'SCISSORS') ||
+    //     (playerSelection.toLowerCase() === 'SCISSORS' && computerSelection === 'PAPER') ||
+    //     (playerSelection.toLowerCase() === 'PAPER' && computerSelection === 'ROCK')
+    //  ) {
+    //     //  playerScore++
+    //    return 'Player'
+    //  } if  (
+    //     (playerSelection.toLowerCase() === 'SCISSORS' && computerSelection === 'ROCK') ||
+    //     (playerSelection.toLowerCase() === 'PAPER' && computerSelection === 'SCISSORS') ||
+    //     (playerSelection.toLowerCase() === 'ROCK' && computerSelection === 'PAPER')
+    //  ) {
+    //     //  computerScore++
+    //     return 'Computer'
+    //  }
+ }  
+
+function playerChoice() {
+    let input = prompt('Type Rock, Paper, Scissors');
+    while(input == null) {
+        input = prompt('Type Rock, Paper, Scissors');
+    }
+    input = input.toLowerCase();
+}
+
+const choice = ["rock", "paper", "scissors"];
 
 function getComputerChoice() {
-    let choice = ["ROCK", "PAPER", "SCISSORS"];
-    let random = Math.floor(Math.random() * choice.length);
-    console.log(choice[random]);
+    return choice[Math.floor(Math.random() * choice.length)]; 
 }
 
-function playRound(playerSelection, computerSelection) {
-    if (playerSelection === computerSelection) {
-        roundWinner = 'tie'
-    } if (
-       (playerSelection === 'ROCK' && computerSelection === 'SCISSORS') ||
-       (playerSelection === 'SCISSORS' && computerSelection === 'PAPER') ||
-       (playerSelection === 'PAPER' && computerSelection === 'ROCK')
-    ) {
-        playerScore++
-        roundWinner = 'Player'
-    } if  (
-       (playerSelection === 'SCISSORS' && computerSelection === 'ROCK') ||
-       (playerSelection === 'PAPER' && computerSelection === 'SCISSORS') ||
-       (playerSelection === 'ROCK' && computerSelection === 'PAPER')
-    ) {
-        computerScore++
-        roundWinner = 'Computer'
-    }
-}
+game();
 
-const playerSelection = 'rock';
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+
+
+
+

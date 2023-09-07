@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
-    <div class="header">
+    <!-- <div class="header">
         <div class="topheader">
             <h1>Rock Paper Scissors</h1>
         </div>
@@ -17,13 +17,13 @@
     </div>
 
     <div class="choice">
-        <button type="submit" class="button button1">
+        <button type="submit" class="button" id="button1">
             <img src=images/rock.png alt="Image of a fist. Click here to play 'Rock'" title="Click here to play 'Rock'">
         </button>
-        <button type="submit" class="button button2">
+        <button type="submit" class="button" id="button2">
             <img src=images/paper.png alt="Image of a fist. Click here to play 'Rock'" title="Click here to play 'Paper'">
         </button>
-        <button type="submit" class="button button3">
+        <button type="submit" class="button" id="button3">
             <img src=images/scissors.png alt="Image of hand making scissors. Click here to play 'Scissors'" title="Click here to play 'Scissors'">
         </button>
     </div>
@@ -32,8 +32,18 @@
         <div class="playerscore">Player Score:</div>
         <div class="computerscore">Computer Score:</div>
     </div>
+    <div class="points">
+        <p id="myscore"></p>
+        <p id="compscore"></p>
+    </div>
 
-    <div id="scoreMessage"></div>
+    <div id="scoreMessage"></div> -->
+
+    <div class="flex-container">
+        <h1>Rock Paper Scissors</h1>
+        <button onclick="game()">Start Game</button>
+        <p>This game is played in the Console.</p>
+    </div>
 
     <script src="script.js"></script>
 </body>
