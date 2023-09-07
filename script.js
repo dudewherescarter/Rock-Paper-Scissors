@@ -1,28 +1,19 @@
+const choice = ["rock", "paper", "scissors"];
+const winners = [];
 
 function game() {
-    playRound();
+    for (let i = 1; i <= 5; i++) {
+        playRound(i);
+    }
+    logWins();
 }
 
-function playRound() {
+function playRound(round) {
     const playerSelection = playerChoice();
     const computerSelection = getComputerChoice();
-    //  if (playerSelection.toLowerCase() === computerSelection) {
-    //     return "Tie";
-    //  } if  (
-    //     (playerSelection.toLowerCase() === 'ROCK' && computerSelection === 'SCISSORS') ||
-    //     (playerSelection.toLowerCase() === 'SCISSORS' && computerSelection === 'PAPER') ||
-    //     (playerSelection.toLowerCase() === 'PAPER' && computerSelection === 'ROCK')
-    //  ) {
-    //     //  playerScore++
-    //    return 'Player'
-    //  } if  (
-    //     (playerSelection.toLowerCase() === 'SCISSORS' && computerSelection === 'ROCK') ||
-    //     (playerSelection.toLowerCase() === 'PAPER' && computerSelection === 'SCISSORS') ||
-    //     (playerSelection.toLowerCase() === 'ROCK' && computerSelection === 'PAPER')
-    //  ) {
-    //     //  computerScore++
-    //     return 'Computer'
-    //  }
+    const winner = checkWinner(playerSelection,computerSelection);
+    winners.push(winner);
+    logRound(playerSelection, computerSelection, winner, round)
  }  
 
 function playerChoice() {
@@ -31,15 +22,58 @@ function playerChoice() {
         input = prompt('Type Rock, Paper, Scissors');
     }
     input = input.toLowerCase();
+    let check = validateInput(input)
+    while (check == false) {
+        input = prompt("Type Rock, Paper, Scissors. Spelling needs to be exact, but capitalization doesn't matter");
+        while(input == null) {
+            input = prompt('Type Rock, Paper, Scissors');
+        }
+        input = input.toLowerCase()
+        check = validateInput(input);
+    }
+    return input; 
 }
-
-const choice = ["rock", "paper", "scissors"];
 
 function getComputerChoice() {
     return choice[Math.floor(Math.random() * choice.length)]; 
 }
 
-game();
+function validateInput(choice) {
+    return choice.includes(choice);
+}
+
+function checkWinner(choiceP, choiceC) {
+    if (choiceP === choiceC) {
+        return "Tie";
+    } else if  (
+        (choiceP === 'rock' && choiceC === 'scissors') ||
+        (choiceP === 'scissors' && choiceC === 'paper') ||
+        (choiceP === 'paper' && choiceC === 'rock')
+        ) {
+        return 'Player'; 
+    } else {
+        return "Computer";
+    }
+}
+
+function logWins(){
+    let playerWins = winners.filter((item) => item == 'Player').length;
+    let computerWins = winners.filter((item) => item == 'Computer').length;
+    let ties = winners.filter((item) => item == 'Tie').length;
+    console.log('Results:');
+    console.log('Player Wins:',playerWins);
+    console.log('Computer Wins:',computerWins);
+    console.log('Ties',ties);
+}
+
+function logRound(playerChoice, getComputerChoice, winner, round) {
+    console.log('Round:', round);
+    console.log('Player Chose:',playerChoice);
+    console.log('Computer Chose:',getComputerChoice);
+    console.log(winner, "Won the Round");
+    console.log('--------------------------');
+
+}
 
 
 
