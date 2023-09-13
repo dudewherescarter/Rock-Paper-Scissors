@@ -1,11 +1,35 @@
 const choice = ["rock", "paper", "scissors"];
 const winners = [];
+const rock = document.getElementById('rock');
+const paper = document.getElementById('paper');
+const scissors = document.getElementById('scissors');
 
-const btn = document.getElementById('game');
-btn.addEventListener ('click', () => {
-    for (let i = 1; i <= 5; i++) {
-        playRound(i);
-    }
+// const btn = document.getElementById('game');
+// btn.addEventListener ('click', () => {
+//     // for (let i = 1; i <= 5; i++) {
+//         playRound();
+//     // }
+//     logWins();
+// });
+
+rock.addEventListener ('click', () => {
+    // for (let i = 1; i <= 5; i++) {
+        playRound();
+    // }
+    logWins();
+});
+
+paper.addEventListener ('click', () => {
+    // for (let i = 1; i <= 5; i++) {
+        playRound();
+    // }
+    logWins();
+});
+
+scissors.addEventListener ('click', () => {
+    // for (let i = 1; i <= 5; i++) {
+        playRound();
+    // }
     logWins();
 });
 
@@ -18,21 +42,13 @@ function playRound(round) {
  }  
 
 function playerChoice() {
-    let input = prompt('Type Rock, Paper, Scissors');
-    while(input == null) {
-        input = prompt('Type Rock, Paper, Scissors');
+    if (rock) {
+        return 'rock'
+    } else if (paper) {
+        return 'paper'
+    } else if (scissors) {
+        return 'scissors'
     }
-    input = input.toLowerCase();
-    let check = validateInput(input)
-    while (check == false) {
-        input = prompt("Type Rock, Paper, Scissors. Spelling needs to be exact, but capitalization doesn't matter");
-        while(input == null) {
-            input = prompt('Type Rock, Paper, Scissors');
-        }
-        input = input.toLowerCase()
-        check = validateInput(input);
-    }
-    return input; 
 }
 
 function getComputerChoice() {
