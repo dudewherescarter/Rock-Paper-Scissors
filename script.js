@@ -3,35 +3,50 @@ const winners = [];
 const rock = document.getElementById('rock');
 const paper = document.getElementById('paper');
 const scissors = document.getElementById('scissors');
+const userChoice = document.querySelector('.userChoice');
+const botChoice = document.querySelector('.botChoice');
+const answer = document.querySelector('.answer');
+const playerScore = document.querySelector('.playerScore');
+const computerScore = document.querySelector('.computerScore');
+const finalScore = document.querySelector('#finalScore');
+const newGameBtn = document.querySelector('#newGame');
 
-// const btn = document.getElementById('game');
-// btn.addEventListener ('click', () => {
-//     // for (let i = 1; i <= 5; i++) {
-//         playRound();
-//     // }
-//     logWins();
-// });
+let scoreToReach = 5;
+let isGameOver = false;
+
+playerScore.innerHTML = 0;
+computerScore.innerHTML = 0;
 
 rock.addEventListener ('click', () => {
-    // for (let i = 1; i <= 5; i++) {
-        playRound();
-    // }
-    logWins();
+    playRound();
+    if (!isGameOver) {
+        endGame();
+    }
 });
 
 paper.addEventListener ('click', () => {
-    // for (let i = 1; i <= 5; i++) {
-        playRound();
-    // }
-    logWins();
+    playRound();
+    if (!isGameOver) {
+        endGame();
+    }
 });
 
 scissors.addEventListener ('click', () => {
-    // for (let i = 1; i <= 5; i++) {
-        playRound();
-    // }
-    logWins();
+    playRound();
+    if (!isGameOver) {
+        endGame();
+    }
 });
+
+newGameBtn.addEventListener('click', function () {
+    isGameOver = false;
+    playerScore.innerHTML = 0;
+    computerScore.innerHTML = 0;
+    answer.innerHTML = "";
+    userChoice.innerHTML = "";
+    botChoice.innerHTML = "";
+    finalScore.innerHTML = "";
+  });
 
 function playRound(round) {
     const playerSelection = playerChoice();
@@ -77,22 +92,28 @@ function logWins(){
     let playerWins = winners.filter((item) => item == 'Player').length;
     let computerWins = winners.filter((item) => item == 'Computer').length;
     let ties = winners.filter((item) => item == 'Tie').length;
-    console.log('Results:');
-    console.log('Player Wins:',playerWins);
-    console.log('Computer Wins:',computerWins);
-    console.log('Ties',ties);
+    playerScore.innerHTML = (playerWins);
+    computerScore.innerHTML = (computerWins);
 }
 
 function logRound(playerChoice, getComputerChoice, winner, round) {
-    console.log('Round:', round);
-    console.log('Player Chose:',playerChoice);
-    console.log('Computer Chose:',getComputerChoice);
-    console.log(winner, "Won the Round");
-    console.log('--------------------------');
-
+    answer.innerHTML = (winner, `${winner}`);
+    userChoice.innerHTML = (playerChoice, `${playerChoice}`);
+    botChoice.innerHTML = (getComputerChoice, `${getComputerChoice}`);
 }
 
 
+
+function endGame() {
+    if (playerScore === scoreToReach || computerScore === scoreToReach) {
+      isGameOver = true;
+      if (playerScore === scoreToReach) {
+        finalScore.innerHTML = "You won the game! Yay!";
+      } else if (computerScore === scoreToReach) {
+        finalScore.innerHTML = "You lost the game. Maybe next time.";
+      }
+    }
+  }
 
 
 

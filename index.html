@@ -16,7 +16,9 @@
         </div>    
     </div>
 
-    <div class="choice">
+    <p id="finalScore"></p>
+
+    <div class="click">
         <button type="submit" class="button" id="rock">
             <img src=images/rock.png alt="Image of a fist. Click here to play 'Rock'" title="Click here to play 'Rock'">
         </button>
@@ -28,21 +30,30 @@
         </button>
     </div>
 
-    <!-- <div class="score">
-        <div class="playerscore">Player Score:</div>
-        <div class="computerscore">Computer Score:</div>
-    </div>
-    <div class="points">
-        <p id="myscore"></p>
-        <p id="compscore"></p>
-    </div>
+    <button id='newGame'>New Game</button>
 
-    <div id="scoreMessage"></div> -->
+    <div class="container">
+        <div class="user">
+            <p>Player Choice:</p>
+            <p class="userChoice">0</p>
+            <p>Computer Choice:</p>
+            <p class="botChoice">0</p>
+        </div>
 
-    <!-- <div class="flex-container">
-        <button id="game">Start Game</button>
-        <p>This game is played in the Console.</p>
-    </div> -->
+        <div class="results">
+            <p>Results:</p>
+            <p class="answer"></p>
+        </div>
+
+        <div class="score">
+            <p>Player Score:</p>
+            <p class="playerScore"></p>
+            <p>Computer Score:</p>
+            <p class="computerScore"></p>
+        </div>
+    </div>
+    
+    <div id="scoreMessage"></div>
 
     <script src="script.js"></script>
 </body>
